@@ -537,6 +537,14 @@ public class Socket extends Emitter {
         strategy = null;
     }
 
+    public void setPingInterval(long time){
+        ws.setPingInterval(time);
+    }
+
+    public void sendPing(){
+        ws.sendPing();
+    }
+
     /**
      * States can be
      * CLOSED
