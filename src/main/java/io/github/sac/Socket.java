@@ -537,12 +537,44 @@ public class Socket extends Emitter {
         strategy = null;
     }
 
-    public void setPingInterval(long time){
-        ws.setPingInterval(time);
+    public Socket setPingInterval(long time){
+        EventThread.exec(new Runnable() {
+            public void run() {
+                ws.setPingInterval(time);
+            }
+        });
+
+        return this;
     }
 
-    public void sendPing(){
-        ws.sendPing();
+    public Socket sendPing(){
+        EventThread.exec(new Runnable() {
+            public void run() {
+                ws.sendPing();
+            }
+        });
+
+        return this;
+    }
+
+    public Socket setPongInterval(long time){
+        EventThread.exec(new Runnable() {
+            public void run() {
+                ws.setPongInterval(time);
+            }
+        });
+
+        return this;
+    }
+
+    public Socket sendPong(){
+        EventThread.exec(new Runnable() {
+            public void run() {
+                ws.sendPong();
+            }
+        });
+
+        return this;
     }
 
     /**
